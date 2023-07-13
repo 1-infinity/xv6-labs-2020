@@ -7,6 +7,16 @@ r_mhartid()
   return x;
 }
 
+// 获取当前函数的帧指针
+static inline uint64
+r_fp()
+{
+    uint64 point;
+    asm volatile("mv %0, s0" : "=r" (point) );
+    return point;
+}
+
+
 // Machine Status Register, mstatus
 
 #define MSTATUS_MPP_MASK (3L << 11) // previous mode.
