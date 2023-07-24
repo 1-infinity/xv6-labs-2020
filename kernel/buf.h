@@ -6,7 +6,10 @@ struct buf {
   struct sleeplock lock;
   uint refcnt;
   struct buf *prev; // LRU cache list
+  // 组成hash表
   struct buf *next;
   uchar data[BSIZE];
+  // 记录最后使用缓存块的时间  
+  uint timestamp;
 };
 
